@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<addon scheme="3.0" edition_type="ROOT,ULT:VENDOR">
+    <id>paygate</id>
+	<name>PayGate Payment Gateway</name>
+	<description>PayGate Payment Gateway</description>
+	<version>1.0.1</version>
+    <default_language>en</default_language>
+    <priority>1000</priority>
+    <status>active</status>
+    <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+    <functions>
+        <item for="install">fn_paygate_install</item>
+        <item for="uninstall">fn_paygate_uninstall</item>
+    </functions>
+</addon>
