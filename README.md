@@ -6,7 +6,7 @@ This is the PayGate PayWeb3 plugin for CS-Cart. Please feel free to contact the 
 ## Installation
 [![How To Setup PayGate PayWeb for CS-Cart](https://www.appinlet.com/wp-content/uploads/2018/09/CS-Cart-Integration.jpg)](https://www.youtube.com/watch?v=9Lhvc26WKjs "How To Setup PayGate PayWeb for CS-Cart")
 
-Please navigate to the [releases page](https://github.com/PayGate/PayWeb_CSCart/releases), download the latest release (v1.0.1) and unzip. You will them be able to follow the integration guide PDF which is included in the zip.
+Please navigate to the [releases page](https://github.com/PayGate/PayWeb_CSCart/releases), download the latest release (v1.0.1) and unzip. You will then be able to follow the integration guide PDF which is included in the zip.
 
 ## Collaboration
 
