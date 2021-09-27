@@ -1,0 +1,16 @@
+=====================================
+Date	  : Version: Description
+=====================================
+
+2021-09-27: v1.0.2 : Add payment types.
+                     Tested with 4.13.2.
+
+2021-01-03: v1.0.1 : Big fixes and improvements.
+
+2017-12-14: v1.0.0 : Initial commit.
+
+
+
+
+
+

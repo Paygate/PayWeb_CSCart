@@ -1,9 +1,18 @@
 <?xml version="1.0"?>
+<!--
+/*
+ * Copyright (c) 2021 PayGate (Pty) Ltd
+ *
+ * Author: App Inlet (Pty) Ltd
+ *
+ * Released under the GNU General Public License
+ */
+-->
 <addon scheme="3.0" edition_type="ROOT,ULT:VENDOR">
     <id>paygate</id>
-	<name>PayGate Payment Gateway</name>
-	<description>PayGate Payment Gateway</description>
-	<version>1.0.1</version>
+    <name>PayGate Payment Gateway</name>
+    <description>PayGate Payment Gateway</description>
+    <version>1.0.2</version>
     <default_language>en</default_language>
     <priority>1000</priority>
     <status>active</status>
