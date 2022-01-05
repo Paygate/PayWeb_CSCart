@@ -1,5 +1,5 @@
 {*
- * Copyright (c) 2021 PayGate (Pty) Ltd
+ * Copyright (c) 2022 PayGate (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
@@ -79,14 +79,14 @@
                  style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="momopay">
         </p>
 
-        <p style="height: 32px;"><input type="checkbox" id="pw3_masterpass"
-                                        name="payment_data[processor_params][pw3_payment_type_masterpass]"
-                                        value="pw3_masterpass"
-                                        {if $processor_params.pw3_payment_type_masterpass == "pw3_masterpass"}checked{/if}
+        <p style="height: 32px;"><input type="checkbox" id="pw3_scantopay"
+                                        name="payment_data[processor_params][pw3_payment_type_scantopay]"
+                                        value="pw3_scantopay"
+                                        {if $processor_params.pw3_payment_type_scantopay == "pw3_scantopay"}checked{/if}
                                         style="float: left;">
-            <label for="pw3_masterpass">&nbsp;&nbsp;MasterPass</label>
-            <img src="images/paygate/masterpass.svg"
-                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="masterpass">
+            <label for="pw3_scantopay">&nbsp;&nbsp;ScanToPay</label>
+            <img src="images/paygate/scan-to-pay.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="scantopay">
         </p>
 
         <p style="height: 32px;"><input type="checkbox" id="pw3_snapscan"
