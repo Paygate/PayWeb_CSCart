@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2021 PayGate (Pty) Ltd
+ * Copyright (c) 2022 PayGate (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
@@ -14,6 +14,8 @@ if ( ! defined('AREA')) {
 const PAYGATE_SCRIPT = 'paygate.php';
 
 if ( ! defined('PAYMENT_NOTIFICATION')) {
+    $user_id = $_SESSION['auth']['user_id'];
+
     $pw3_paymethod = 'pw3_cc';
     $set_paymethod = false;
     if (isset($_POST['pw3_paymethods'])) {
@@ -35,11 +37,9 @@ if ( ! defined('PAYMENT_NOTIFICATION')) {
     $form['date']      = date('d-m-Y H:i');
     $form['email']     = $order_info['email'];
     $country_code3     = db_get_field('SELECT code_A3 FROM ?:countries WHERE code=?s', $order_info['b_country']);
-    $return_url        = fn_url("payment_notification.return?payment=paygate&order_id=$order_id");
-    $notify_url        = fn_url("payment_notification.notify&payment=paygate&order_id=$order_id");
-    $p_order_id        = trim(
-                             $wc_data['order_prefix']
-                         ) . (($order_info['repaid']) ? ($order_id . '_' . $order_info['repaid']) : $order_id);
+    $return_url        = fn_url( "payment_notification.return?payment=paygate&order_id=$order_id&s=$user_id" );
+    $notify_url        = fn_url( "payment_notification.notify&payment=paygate&order_id=$order_id&s=$user_id" );
+    $p_order_id        = trim( $wc_data['order_prefix'] ) . (  ( $order_info['repaid'] ) ? ( $order_id . '_' . $order_info['repaid'] ) : $order_id );
     $initiateFields    = array(
         'PAYGATE_ID'       => $form['id'],
         'REFERENCE'        => $form['reference'],
@@ -74,9 +74,9 @@ if ( ! defined('PAYMENT_NOTIFICATION')) {
                 $initiateFields['PAY_METHOD']        = 'EW';
                 $initiateFields['PAY_METHOD_DETAIL'] = 'Momopay';
                 break;
-            case 'pw3_masterpass':
+            case 'pw3_scantopay':
                 $initiateFields['PAY_METHOD']        = 'EW';
-                $initiateFields['PAY_METHOD_DETAIL'] = 'MasterPass';
+                $initiateFields['PAY_METHOD_DETAIL'] = 'ScanToPay';
                 break;
             case 'pw3_snapscan':
                 $initiateFields['PAY_METHOD']        = 'EW';
@@ -92,7 +92,7 @@ if ( ! defined('PAYMENT_NOTIFICATION')) {
     }
 
     $initiateFields['NOTIFY_URL'] = $notify_url;
-    $initiateFields['USER3']      = 'cscart-v102';
+    $initiateFields['USER3']      = 'cscart-v103';
 
 
     $initiateFields['CHECKSUM'] = md5(implode('', $initiateFields) . $form['key']);
@@ -115,6 +115,8 @@ if ( ! defined('PAYMENT_NOTIFICATION')) {
 HTML;
     die;
 } elseif (defined('PAYMENT_NOTIFICATION')) {
+    $user_id = (int)$_GET['s'];
+    fn_login_user($user_id);
     if ($mode == 'return') {
         $order_id       = $_REQUEST['order_id'];
         $order_info     = fn_get_order_info($order_id);

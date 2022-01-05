@@ -1,5 +1,5 @@
 {*
- * Copyright (c) 2021 PayGate (Pty) Ltd
+ * Copyright (c) 2022 PayGate (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
@@ -46,10 +46,10 @@
                                  style="float: right; height: 20px !important; vertical-align: middle;"
                                  alt="zapper"></p>
                     {/if}
-                    {if $parameter == 'pw3_masterpass'}
-                        <p><input type="radio" id="pw3_masterpass" name="pw3_paymethods" value="pw3_masterpass">
-                            <label for="pw3_masterpass">MasterPass</label>
-                            <img src="images/paygate/masterpass.svg"
+                    {if $parameter == 'pw3_scantopay'}
+                        <p><input type="radio" id="pw3_scantopay" name="pw3_paymethods" value="pw3_scantopay">
+                            <label for="pw3_scantopay">ScanToPay</label>
+                            <img src="images/paygate/scan-to-pay.svg"
                                  style="float: right; height: 20px !important; vertical-align: middle;"
                                  alt="zapper"></p>
                     {/if}
