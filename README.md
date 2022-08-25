@@ -1,7 +1,7 @@
 # PayWeb_CSCart
 ## PayGate CS-Cart plugin v1.0.3 for CS-Cart 4.13.2
 
-This is the PayGate PayWeb3 plugin for CS-Cart. Please feel free to contact the PayGate support team at support@paygate.co.za should you require any assistance.
+This is the PayGate PayWeb3 plugin for CS-Cart. Please feel free to contact the PayGate support team at supportsa@dpogroup.com should you require any assistance.
 
 ## Installation
 [![How To Setup PayGate PayWeb for CS-Cart](https://appinlet.com/wp-content/uploads/2021/01/How-To-Setup-PayGate-PayWeb-for-CS-Cart.jpg)](https://www.youtube.com/watch?v=9Lhvc26WKjs "How To Setup PayGate PayWeb for CS-Cart")
