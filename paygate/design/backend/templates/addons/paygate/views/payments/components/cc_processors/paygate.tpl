@@ -1,28 +1,28 @@
 {*
- * Copyright (c) 2022 PayGate (Pty) Ltd
+ * Copyright (c) 2024 Payfast (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
  * Released under the GNU General Public License
  *}
 <div class="control-group">
-    <label class="control-label" for="account">PayGate ID:</label>
+    <label class="control-label" for="account">Paygate ID:</label>
     <div class="controls">
         <input type="text" name="payment_data[processor_params][id]" id="account" value="{$processor_params.id}">
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label" for="key">Secret:</label>
+    <label class="control-label" for="key">Encryption Key:</label>
     <div class="controls">
         <input type="text" name="payment_data[processor_params][secret]" id="salt" value="{$processor_params.secret}">
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label" for="mode">{__("test_live_mode")}:</label>
+    <label class="control-label" for="mode">Test Mode:</label>
     <div class="controls">
         <select name="payment_data[processor_params][mode]" id="mode">
-            <option value="test" {if $processor_params.mode == "test"}selected="selected"{/if}>{__("test")}</option>
-            <option value="live" {if $processor_params.mode == "live"}selected="selected"{/if}>{__("live")}</option>
+            <option value="test" {if $processor_params.mode == "test"}selected="selected"{/if}>{__("yes")}</option>
+            <option value="live" {if $processor_params.mode == "live"}selected="selected"{/if}>{__("no")}</option>
         </select>
     </div>
 </div>
@@ -33,7 +33,7 @@
                                         name="payment_data[processor_params][pw3_payment_type_cc]" value="pw3_cc"
                                         {if $processor_params.pw3_payment_type_cc == "pw3_cc"}checked{/if}
                                         style="float: left;">
-            <label for="pw3_cc">&nbsp;&nbsp;Credit Card</label>
+            <label for="pw3_cc">&nbsp;&nbsp;Card</label>
             <img src="images/paygate/mastercard-visa.svg"
                  style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;"
                  alt="credit-card">
@@ -43,7 +43,7 @@
                                         name="payment_data[processor_params][pw3_payment_type_bt]" value="pw3_bt"
                                         {if $processor_params.pw3_payment_type_bt == "pw3_bt"}checked{/if}
                                         style="float: left;">
-            <label for="pw3_bt">&nbsp;&nbsp;Bank Transfer</label>
+            <label for="pw3_bt">&nbsp;&nbsp;SiD Secure EFT</label>
             <img src="images/paygate/sid.svg"
                  style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;"
                  alt="bank-transfer">
@@ -57,36 +57,6 @@
             <label for="pw3_zapper">&nbsp;&nbsp;Zapper</label>
             <img src="images/paygate/zapper.svg"
                  style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="zapper">
-        </p>
-
-        <p style="height: 32px;"><input type="checkbox" id="pw3_mobicred"
-                                        name="payment_data[processor_params][pw3_payment_type_mobicred]"
-                                        value="pw3_mobicred"
-                                        {if $processor_params.pw3_payment_type_mobicred == "pw3_mobicred"}checked{/if}
-                                        style="float: left;">
-            <label for="pw3_mobicred">&nbsp;&nbsp;MobiCred</label>
-            <img src="images/paygate/mobicred.svg"
-                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="mobicred">
-        </p>
-
-        <p style="height: 32px;"><input type="checkbox" id="pw3_momopay"
-                                        name="payment_data[processor_params][pw3_payment_type_momopay]"
-                                        value="pw3_momopay"
-                                        {if $processor_params.pw3_payment_type_momopay == "pw3_momopay"}checked{/if}
-                                        style="float: left;">
-            <label for="pw3_momopay">&nbsp;&nbsp;MomoPay</label>
-            <img src="images/paygate/momopay.svg"
-                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="momopay">
-        </p>
-
-        <p style="height: 32px;"><input type="checkbox" id="pw3_scantopay"
-                                        name="payment_data[processor_params][pw3_payment_type_scantopay]"
-                                        value="pw3_scantopay"
-                                        {if $processor_params.pw3_payment_type_scantopay == "pw3_scantopay"}checked{/if}
-                                        style="float: left;">
-            <label for="pw3_scantopay">&nbsp;&nbsp;ScanToPay</label>
-            <img src="images/paygate/scan-to-pay.svg"
-                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="scantopay">
         </p>
 
         <p style="height: 32px;"><input type="checkbox" id="pw3_snapscan"
@@ -107,6 +77,66 @@
             <label for="pw3_paypal">&nbsp;&nbsp;PayPal</label>
             <img src="images/paygate/paypal.svg"
                  style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="paypal">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_mobicred"
+                                        name="payment_data[processor_params][pw3_payment_type_mobicred]"
+                                        value="pw3_mobicred"
+                                        {if $processor_params.pw3_payment_type_mobicred == "pw3_mobicred"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_mobicred">&nbsp;&nbsp;Mobicred</label>
+            <img src="images/paygate/mobicred.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="mobicred">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_momopay"
+                                        name="payment_data[processor_params][pw3_payment_type_momopay]"
+                                        value="pw3_momopay"
+                                        {if $processor_params.pw3_payment_type_momopay == "pw3_momopay"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_momopay">&nbsp;&nbsp;MoMoPay</label>
+            <img src="images/paygate/momopay.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="momopay">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_scantopay"
+                                        name="payment_data[processor_params][pw3_payment_type_scantopay]"
+                                        value="pw3_scantopay"
+                                        {if $processor_params.pw3_payment_type_scantopay == "pw3_scantopay"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_scantopay">&nbsp;&nbsp;ScanToPay</label>
+            <img src="images/paygate/scan-to-pay.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="scantopay">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_applepay"
+                                        name="payment_data[processor_params][pw3_payment_type_applepay]"
+                                        value="pw3_applepay"
+                                        {if $processor_params.pw3_payment_type_applepay == "pw3_applepay"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_applepay">&nbsp;&nbsp;ApplePay</label>
+            <img src="images/paygate/apple-pay.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="applepay">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_samsungpay"
+                                        name="payment_data[processor_params][pw3_payment_type_samsungpay]"
+                                        value="pw3_samsungpay"
+                                        {if $processor_params.pw3_payment_type_samsungpay == "pw3_samsungpay"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_samsungpay">&nbsp;&nbsp;Samsung Pay</label>
+            <img src="images/paygate/samsung-pay.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="samsungpay">
+        </p>
+
+        <p style="height: 32px;"><input type="checkbox" id="pw3_rcs"
+                                        name="payment_data[processor_params][pw3_payment_type_rcs]"
+                                        value="pw3_rcs"
+                                        {if $processor_params.pw3_payment_type_rcs == "pw3_rcs"}checked{/if}
+                                        style="float: left;">
+            <label for="pw3_rcs">&nbsp;&nbsp;RCS</label>
+            <img src="images/paygate/rcs.svg"
+                 style="float: right; padding-right: 65%; height: 20px !important; margin-top: -25px;" alt="rcs">
         </p>
     </div>
 </div>

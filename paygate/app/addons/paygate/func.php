@@ -1,13 +1,13 @@
 <?php
 /*
- * Copyright (c) 2022 PayGate (Pty) Ltd
+ * Copyright (c) 2024 Payfast (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
  * Released under the GNU General Public License
  */
 
-if ( ! defined('BOOTSTRAP')) {
+if (!defined('BOOTSTRAP')) {
     die('Access denied');
 }
 
@@ -15,7 +15,7 @@ function fn_paygate_install()
 {
     db_query("DELETE FROM ?:payment_processors WHERE processor_script = ?s", "paygate.php");
     db_query(
-        "INSERT INTO ?:payment_processors (`processor`, `processor_script`, `processor_template`, `admin_template`, `callback`, `type`, `addon`) VALUES ('PayGate (Web)', 'paygate.php', 'views/orders/components/payments/paygate.tpl', 'paygate.tpl', 'Y', 'P', 'paygate')"
+        "INSERT INTO ?:payment_processors (`processor`, `processor_script`, `processor_template`, `admin_template`, `callback`, `type`, `addon`) VALUES ('Paygate', 'paygate.php', 'views/orders/components/payments/paygate.tpl', 'paygate.tpl', 'Y', 'P', 'paygate')"
     );
 }
 
@@ -26,17 +26,17 @@ function fn_paygate_uninstall()
 
 function fn_process_paygate_ipn($order_id, $data)
 {
-    $order_info = fn_get_order_info($order_id, true);
-    $status_completed = isset($order_info['payment_method']['processor_params']['status']['completed']) ? $order_info['payment_method']['processor_params']['status']['completed'] : 'P';
-    $status_failed = isset($order_info['payment_method']['processor_params']['status']['failed']) ? $order_info['payment_method']['processor_params']['status']['failed'] : 'F';
-    $wcRefNo = trim(@$data['TM_RefNo']);
-    $wcPrice = trim(@$data['TM_DebitAmt']) * 1.00;
-    $wcCurrency = trim($data['TM_Currency']);
-    $wcStatus = strtoupper(trim($data['TM_Status']));
-    $wcCode = trim($data['TM_ApprovalCode']);
-    $wcError = trim(trim(trim($data['TM_Error']) . " - " . trim($data['TM_ErrorMsg'])), '-');
-    $order_prefix = trim($order_info['payment_method']['processor_params']['order_prefix']);
-    $wcTotal = fn_format_price($order_info['total'], $wcCurrency) * 1.00;
+    $order_info       = fn_get_order_info($order_id, true);
+    $status_completed = $order_info['payment_method']['processor_params']['status']['completed'] ?? 'P';
+    $status_failed    = $order_info['payment_method']['processor_params']['status']['failed'] ?? 'F';
+    $wcRefNo          = trim(@$data['TM_RefNo']);
+    $wcPrice          = trim(@$data['TM_DebitAmt']) * 1.00;
+    $wcCurrency       = trim($data['TM_Currency']);
+    $wcStatus         = strtoupper(trim($data['TM_Status']));
+    $wcCode           = trim($data['TM_ApprovalCode']);
+    $wcError          = trim(trim(trim($data['TM_Error']) . " - " . trim($data['TM_ErrorMsg'])), '-');
+    $order_prefix     = trim($order_info['payment_method']['processor_params']['order_prefix']);
+    $wcTotal          = fn_format_price($order_info['total'], $wcCurrency) * 1.00;
     if ($wcRefNo == trim($order_prefix . @$order_info['order_id']) && $wcTotal == $wcPrice && $wcStatus != '') {
         $orderStatus = $wcStatus == 'YES' ? $status_completed : $status_failed;
     } else {
