@@ -2,6 +2,10 @@
 Date	  : Version: Description
 =====================================
 
+2024-08-27: v1.0.4 : Add RCS, Samsung Pay and Apple Pay payment method options.
+                     Test on CS-Cart 4.18.1.
+                     Bug fixes and improvements.
+
 2022-01-05: v1.0.3 : Fix cart lost on failed payments.
                      Change Masterpass to Scan to Pay.
 
@@ -11,9 +15,3 @@ Date	  : Version: Description
 2021-01-03: v1.0.1 : Big fixes and improvements.
 
 2017-12-14: v1.0.0 : Initial commit.
-
-
-
-
-
-
