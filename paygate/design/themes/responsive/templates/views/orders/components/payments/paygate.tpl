@@ -68,7 +68,8 @@
                                  alt="zapper"></p>
                     {/if}
                     {if $parameter == 'pw3_applepay'}
-                        <p id="applepay"><input type="radio" id="pw3_applepay" name="pw3_paymethods" value="pw3_applepay">
+                        <p id="applepay"><input type="radio" id="pw3_applepay" name="pw3_paymethods"
+                                                value="pw3_applepay">
                             <label for="pw3_applepay">ApplePay</label>
                             <img src="images/paygate/apple-pay.svg"
                                  style="float: right; height: 20px !important; vertical-align: middle;"
@@ -94,13 +95,13 @@
     </div>
 </div>
 <script type="text/javascript">
-  jQuery( document ).ready(function() {
+  jQuery(document).ready(function () {
     if (window.ApplePaySession === undefined) {
       // Apple Pay is not available, so let's hide the specific input element
-      var applePayElement = jQuery('#applepay');
+      var applePayElement = jQuery('#applepay')
 
-      applePayElement.remove();
+      applePayElement.remove()
     }
-  });
+  })
 </script>
 
